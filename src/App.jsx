@@ -6,6 +6,7 @@ import { Route, Link } from 'react-router-dom';
 import Profiles from './components/Profiles';
 import HistorySample from './components/HistorySample';
 import FaceIdentification from './components/FaceIdentification';
+import StockApi from './components/StockApi';
 
 const Root = styled.div`
   padding: 0 4rem;
@@ -27,7 +28,10 @@ const App = () => {
           <Link to="/history">예제</Link>
         </li>
         <li>
-          <Link to="/faceindentification">얼굴 식별</Link>
+          <Link to="/faceindentification">카카오 얼굴 식별</Link>
+        </li>{' '}
+        <li>
+          <Link to="/stockapi">주식 API</Link>
         </li>
       </ul>
       <Route path="/" exact={true} component={Home} />
@@ -35,6 +39,7 @@ const App = () => {
       <Route path="/profiles" component={Profiles} />
       <Route path="/history" component={HistorySample} />
       <Route path="/faceindentification" component={FaceIdentification} />
+      <Route path="/stockapi" component={StockApi} />
     </Root>
   );
 };

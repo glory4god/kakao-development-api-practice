@@ -75,7 +75,7 @@ const FaceIdentification = () => {
     <Container>
       <div className="grid">
         <div>
-          <h2>API 연습</h2>
+          <h2>카카오 얼굴 식별 API</h2>
           {!upLoading && (
             <>
               <h3>이미지 url링크</h3>
@@ -126,7 +126,12 @@ const FaceIdentification = () => {
                 )}>
                 reset
               </button>
-              <FileUpLoader PostImage={PostImage} />
+              <FileUpLoader
+                imageUrl={imageUrl}
+                PostImage={PostImage}
+                setImageUrl={setImageUrl}
+                setUpLoading={setUpLoading}
+              />
             </>
           )}
         </div>
@@ -146,6 +151,7 @@ const FaceIdentification = () => {
           </p>
           <button
             onClick={() => (
+              // eslint-disable-next-line no-sequences
               setUpLoading(false),
               setFace([]),
               setImageUrl({
