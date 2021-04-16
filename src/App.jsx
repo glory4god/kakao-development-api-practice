@@ -7,6 +7,7 @@ import Profiles from './components/Profiles';
 import HistorySample from './components/HistorySample';
 import FaceIdentification from './components/FaceIdentification';
 import StockApi from './components/StockApi';
+import ProductDetect from './components/ProductDetect';
 
 const Root = styled.div`
   padding: 0 4rem;
@@ -29,7 +30,10 @@ const App = () => {
         </li>
         <li>
           <Link to="/faceindentification">카카오 얼굴 식별</Link>
-        </li>{' '}
+        </li>
+        <li>
+          <Link to="/productdetect">카카오 상품 검출</Link>
+        </li>
         <li>
           <Link to="/stockapi">주식 API</Link>
         </li>
@@ -39,6 +43,7 @@ const App = () => {
       <Route path="/profiles" component={Profiles} />
       <Route path="/history" component={HistorySample} />
       <Route path="/faceindentification" component={FaceIdentification} />
+      <Route path="/productdetect" component={ProductDetect} />
       <Route path="/stockapi" component={StockApi} />
     </Root>
   );
