@@ -7,10 +7,13 @@ import Profiles from './components/Profiles';
 import FaceIdentification from './face-components/FaceIdentification';
 import ProductDetect from './face-components/ProductDetect';
 import KakaoMap from './kakaomap-components/KakaoMap';
+import Test from './Test';
+import Counter from './Counter';
 
 const Root = styled.div`
   padding: 0 4rem;
 `;
+
 const App = () => {
   return (
     <Root>
@@ -40,6 +43,8 @@ const App = () => {
       <Route path="/faceindentification" component={FaceIdentification} />
       <Route path="/productdetect" component={ProductDetect} />
       <Route path="/kakaomap" component={KakaoMap} />
+      <Test />
+      <Counter />
     </Root>
   );
 };
