@@ -4,10 +4,9 @@ import Home from './components/Home';
 import styled from 'styled-components';
 import { Route, Link } from 'react-router-dom';
 import Profiles from './components/Profiles';
-import HistorySample from './components/HistorySample';
 import FaceIdentification from './face-components/FaceIdentification';
 import ProductDetect from './face-components/ProductDetect';
-import KakaoMap from './components/KakaoMap';
+import KakaoMap from './kakaomap-components/KakaoMap';
 
 const Root = styled.div`
   padding: 0 4rem;
@@ -26,9 +25,6 @@ const App = () => {
           <Link to="/profiles">프로필</Link>
         </li>
         <li>
-          <Link to="/history">예제</Link>
-        </li>
-        <li>
           <Link to="/faceindentification">카카오 얼굴 식별</Link>
         </li>
         <li>
@@ -41,7 +37,6 @@ const App = () => {
       <Route path="/" exact={true} component={Home} />
       <Route path="/about" component={About} />
       <Route path="/profiles" component={Profiles} />
-      <Route path="/history" component={HistorySample} />
       <Route path="/faceindentification" component={FaceIdentification} />
       <Route path="/productdetect" component={ProductDetect} />
       <Route path="/kakaomap" component={KakaoMap} />
