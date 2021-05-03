@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import { Route, Link } from 'react-router-dom';
 import Profiles from './components/Profiles';
 import HistorySample from './components/HistorySample';
-import FaceIdentification from './components/FaceIdentification';
-import ProductDetect from './components/ProductDetect';
+import FaceIdentification from './face-components/FaceIdentification';
+import ProductDetect from './face-components/ProductDetect';
 import KakaoMap from './components/KakaoMap';
 
 const Root = styled.div`
