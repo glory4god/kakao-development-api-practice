@@ -11,6 +11,9 @@ const Root = styled.section`
     position: absolute;
     z-index: 1;
   }
+  button {
+    margin: 0.5rem 0;
+  }
 `;
 
 const ImagePreview = ({
@@ -38,16 +41,17 @@ const ImagePreview = ({
       </p>
       {face.map((item, key) => (
         <section key={key}>
-          {console.log(item.facial_attributes.age)}
-          <div>
-            <p>number:{key}</p>
-            <p>age:{Math.round(item.facial_attributes.age)}</p>
-            <p>
-              gender:
-              {parseFloat(item.facial_attributes.gender.male).toFixed(3) * 100}%
-              (0%에 가까우면 여자 100%에 가까우면 남자)
-            </p>
+          <div style={{ paddingBottom: '1px', fontWeight: 'bold' }}>
+            number:{key}
           </div>
+          <span style={{ paddingRight: '1rem' }}>
+            age:{Math.round(item.facial_attributes.age)}
+          </span>
+          <span>
+            gender:
+            {parseFloat(item.facial_attributes.gender.male).toFixed(3) * 100}%
+            (0%에 가까우면 여자 100%에 가까우면 남자)
+          </span>
         </section>
       ))}
 

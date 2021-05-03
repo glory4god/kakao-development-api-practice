@@ -6,8 +6,8 @@ import { Route, Link } from 'react-router-dom';
 import Profiles from './components/Profiles';
 import HistorySample from './components/HistorySample';
 import FaceIdentification from './components/FaceIdentification';
-import StockApi from './components/StockApi';
 import ProductDetect from './components/ProductDetect';
+import KakaoMap from './components/KakaoMap';
 
 const Root = styled.div`
   padding: 0 4rem;
@@ -35,7 +35,7 @@ const App = () => {
           <Link to="/productdetect">카카오 상품 검출</Link>
         </li>
         <li>
-          <Link to="/stockapi">주식 API</Link>
+          <Link to="/kakaomap">카카오Map</Link>
         </li>
       </ul>
       <Route path="/" exact={true} component={Home} />
@@ -44,7 +44,7 @@ const App = () => {
       <Route path="/history" component={HistorySample} />
       <Route path="/faceindentification" component={FaceIdentification} />
       <Route path="/productdetect" component={ProductDetect} />
-      <Route path="/stockapi" component={StockApi} />
+      <Route path="/kakaomap" component={KakaoMap} />
     </Root>
   );
 };
