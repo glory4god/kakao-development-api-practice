@@ -6,6 +6,8 @@ const Root = styled.div``;
 const KakaoMap = () => {
   const [keyWord, setKeyWord] = React.useState('강남역');
   const [temp, setTemp] = React.useState('');
+  const [markerList, setMarkerList] = React.useState([]);
+
   React.useEffect(() => {
     var infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
 
@@ -57,15 +59,30 @@ const KakaoMap = () => {
             place.place_name +
             '</div>',
         );
+        setMarkerList([...markerList, [place.x, place.y]]);
         infowindow.open(map, marker);
       });
     };
     ps.keywordSearch(keyWord, placesSearchCB);
-  }, [keyWord]);
+  }, [keyWord, markerList]);
 
   const onChange = (e) => {
     setTemp(() => e.target.value);
   };
+  const calculateCenter = (location) => {
+    var x = 0,
+      y = 0;
+    location.forEach((element) => {
+      x = x + parseFloat(element[0]);
+      y = y + parseFloat(element[1]);
+    });
+    const center = [x / location.length, y / location.length];
+    console.log(center);
+
+    return center;
+  };
+
+  const center = calculateCenter(markerList);
 
   return (
     <Root>
@@ -88,6 +105,13 @@ const KakaoMap = () => {
         }}>
         확인
       </button>
+      {markerList}
+      {markerList.length !== '' &&
+        markerList.map((idx, key) => (
+          <p key={key}>
+            x: {idx[0]}, y: {idx[1]}
+          </p>
+        ))}
     </Root>
   );
 };
