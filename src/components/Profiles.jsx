@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
+import Counter from '../Counter';
+import Test from '../Test';
 import Profile from './Profile';
 
 const Profiles = () => {
@@ -22,6 +24,8 @@ const Profiles = () => {
         render={() => <div>유저를 선택하세요</div>}
       />
       <Route path="/profiles/:username" component={Profile} />
+      <Test />
+      <Counter />
     </div>
   );
 };
