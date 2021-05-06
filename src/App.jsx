@@ -6,9 +6,7 @@ import { Route, Link } from 'react-router-dom';
 import Profiles from './components/Profiles';
 import FaceIdentification from './face-components/FaceIdentification';
 import ProductDetect from './face-components/ProductDetect';
-import KakaoMap from './kakaomap-components/KakaoMap';
-import Test from './Test';
-import Counter from './Counter';
+import LocationMain from './kakaomap-components/LocationMain';
 
 const Root = styled.div`
   padding: 0 4rem;
@@ -25,7 +23,7 @@ const App = () => {
           <Link to="/about">소개</Link>
         </li>
         <li>
-          <Link to="/profiles">프로필</Link>
+          <Link to="/profiles">example</Link>
         </li>
         <li>
           <Link to="/faceindentification">카카오 얼굴 식별</Link>
@@ -34,7 +32,7 @@ const App = () => {
           <Link to="/productdetect">카카오 상품 검출</Link>
         </li>
         <li>
-          <Link to="/kakaomap">카카오Map</Link>
+          <Link to="/location">중심위치 (카카오Map)</Link>
         </li>
       </ul>
       <Route path="/" exact={true} component={Home} />
@@ -42,9 +40,7 @@ const App = () => {
       <Route path="/profiles" component={Profiles} />
       <Route path="/faceindentification" component={FaceIdentification} />
       <Route path="/productdetect" component={ProductDetect} />
-      <Route path="/kakaomap" component={KakaoMap} />
-      <Test />
-      <Counter />
+      <Route path="/location" component={LocationMain} />
     </Root>
   );
 };
