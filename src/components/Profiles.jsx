@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
-import Counter from '../Counter';
+import Counter from './Counter';
 import Test from '../Test';
 import Profile from './Profile';
 
