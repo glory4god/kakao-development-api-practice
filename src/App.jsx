@@ -8,6 +8,7 @@ import FaceIdentification from './face-components/FaceIdentification';
 import ProductDetect from './face-components/ProductDetect';
 import LocationMain from './kakaomap-components/LocationMain';
 import GuestBookMain from './guestbook-components/GuestBookMain';
+import RestApiTest from './restapi-components/RestApiTest';
 
 const Root = styled.div`
   .link {
@@ -57,6 +58,12 @@ const App = () => {
             방명록 API
           </Link>
         </li>
+
+        <li>
+          <Link className="link" to="/restapitest">
+            REST API TEST
+          </Link>
+        </li>
       </ul>
       <Route path="/" exact={true} component={Home} />
       <Route path="/about" component={About} />
@@ -65,6 +72,7 @@ const App = () => {
       <Route path="/productdetect" component={ProductDetect} />
       <Route path="/location" component={LocationMain} />
       <Route path="/guestbook" component={GuestBookMain} />
+      <Route path="/restapitest" component={RestApiTest} />
     </Root>
   );
 };
