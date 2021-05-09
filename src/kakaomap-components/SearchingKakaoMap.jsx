@@ -1,7 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import Paper from '@material-ui/core/Paper';
 
 const Root = styled.div``;
+
+const UserList = styled(Paper)`
+  font-family: sans-serif;
+  width: 500px;
+  height: 60px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 10px 0;
+
+  .userlist {
+    flex-direction: column;
+  }
+`;
 
 const SearchingKakaoMap = ({
   centerPoint,
@@ -23,7 +40,11 @@ const SearchingKakaoMap = ({
         x = x + parseFloat(element[1]);
         y = y + parseFloat(element[2]);
       });
-      setCenterPoint([x / location.length, y / location.length]);
+      setCenterPoint([
+        location[0][0],
+        x / location.length,
+        y / location.length,
+      ]);
       setCalculateHandler(false);
       setMarkerList([]);
       console.log('calculate');
@@ -118,9 +139,16 @@ const SearchingKakaoMap = ({
       </button>
       {markerList.length !== '' &&
         markerList.map((idx, key) => (
-          <p key={key}>
-            id : {key + 1}, keyword : {idx[0]}, x: {idx[1]}, y: {idx[2]}
-          </p>
+          <UserList elevation={3} key={key}>
+            <div className="userlist">
+              <div>
+                id : {key + 1}, keyword : {idx[0]}
+              </div>
+              <div>
+                x: {idx[1]}, y: {idx[2]}
+              </div>
+            </div>
+          </UserList>
         ))}
       <button onClick={() => calculateCenter(markerList)}>계산</button>
       {centerPoint}
