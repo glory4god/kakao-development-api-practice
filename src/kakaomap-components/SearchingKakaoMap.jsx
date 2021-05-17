@@ -1,23 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Paper from '@material-ui/core/Paper';
+import ListLayout from './ListLayout';
+import UserList from './UserList';
 
-const Root = styled.div``;
-
-const UserList = styled(Paper)`
-  font-family: sans-serif;
-  width: 500px;
-  height: 60px;
-  font-size: 1.1rem;
+const Root = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin: 10px 0;
-
-  .userlist {
-    flex-direction: column;
-  }
 `;
 
 const SearchingKakaoMap = ({
@@ -28,6 +15,14 @@ const SearchingKakaoMap = ({
   const [keyWord, setKeyWord] = React.useState('강남역');
   const [temp, setTemp] = React.useState('');
   const [markerList, setMarkerList] = React.useState([]);
+  const [keyWordList, setKeyWordList] = React.useState([]);
+
+  const onClick = (list) => {
+    setMarkerList((markerList) => [
+      ...markerList,
+      [list.placeName, list.y, list.x],
+    ]);
+  };
 
   const onChange = (e) => {
     setTemp(() => e.target.value);
@@ -53,7 +48,8 @@ const SearchingKakaoMap = ({
   );
 
   React.useEffect(() => {
-    var infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
+    setKeyWordList([]);
+    const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
 
     const container = document.getElementById('map');
 
@@ -83,10 +79,25 @@ const SearchingKakaoMap = ({
         // LatLngBounds 객체에 좌표를 추가합니다
         var bounds = new window.kakao.maps.LatLngBounds();
 
+        console.log(data);
+
         for (var i = 0; i < data.length; i++) {
+          setKeyWordList((prev) => [
+            ...prev,
+            {
+              id: data[i].id,
+              address: data[i].address_name,
+              category: data[i].category_group_name,
+              placeName: data[i].place_name,
+              url: data[i].place_url,
+              x: data[i].x,
+              y: data[i].y,
+            },
+          ]);
           displayMarker(data[i]);
           bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
         }
+        console.log(keyWordList);
 
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
         map.setBounds(bounds);
@@ -118,40 +129,36 @@ const SearchingKakaoMap = ({
 
   return (
     <Root>
-      <div style={{ width: '500px', height: '400px' }} id="map" />
-      <input
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
+      <div>
+        <div style={{ width: '500px', height: '400px' }} id="map" />
+        <input
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              setKeyWord(temp);
+              setTemp('');
+            }
+          }}
+          type="text"
+          value={temp}
+          onChange={onChange}
+        />
+        <button
+          onClick={() => {
             setKeyWord(temp);
             setTemp('');
-          }
-        }}
-        type="text"
-        value={temp}
-        onChange={onChange}
-      />
-      <button
-        onClick={() => {
-          setKeyWord(temp);
-          setTemp('');
-        }}>
-        확인
-      </button>
-      {markerList.length !== '' &&
-        markerList.map((idx, key) => (
-          <UserList elevation={3} key={key}>
-            <div className="userlist">
-              <div>
-                id : {key + 1}, keyword : {idx[0]}
-              </div>
-              <div>
-                x: {idx[1]}, y: {idx[2]}
-              </div>
-            </div>
-          </UserList>
-        ))}
-      <button onClick={() => calculateCenter(markerList)}>계산</button>
-      {centerPoint}
+          }}>
+          확인
+        </button>
+        {markerList.length !== '' &&
+          markerList.map((idx, key) => <UserList idx={idx} key={key} />)}
+        <button onClick={() => calculateCenter(markerList)}>계산</button>
+        {centerPoint}
+      </div>
+      <div style={{ paddingLeft: '20px' }}>
+        {keyWordList.map((arr) => {
+          return <ListLayout key={arr.id} arr={arr} onClick={onClick} />;
+        })}
+      </div>
     </Root>
   );
 };

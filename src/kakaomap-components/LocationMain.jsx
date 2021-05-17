@@ -6,8 +6,7 @@ const LocationMain = () => {
   const [searching, setSearching] = React.useState(false);
   const [finding, setFinding] = React.useState(false);
   const [centerPoint, setCenterPoint] = React.useState([
-    127.0297696476572,
-    37.49699028030376,
+    127.0297696476572, 37.49699028030376,
   ]);
   const [calculateHandler, setCalculateHandler] = React.useState(true);
 

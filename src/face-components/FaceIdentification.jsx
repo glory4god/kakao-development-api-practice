@@ -42,11 +42,13 @@ const FaceIdentification = () => {
         body: qs.stringify(image),
       },
     );
+    console.log(response);
 
     if (!response.ok) {
       return window.alert('failed');
     }
     const resJson = await response.json();
+    console.log(resJson);
     setSize({ h: resJson.result.height, w: resJson.result.width });
     setFace(resJson.result.faces);
     setLoading(true);
