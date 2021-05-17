@@ -17,9 +17,9 @@ const ItemList = ({ arr }) => {
   return (
     <Root>
       <div className="grid">
-        {arr.map((idx) => {
+        {arr.map((idx, key) => {
           return (
-            <div className="grid-box">
+            <div key={key} className="grid-box">
               <div style={{ height: '155px', backgroundColor: 'red' }}></div>
               <div>
                 이름 : {idx}

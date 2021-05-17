@@ -20,7 +20,7 @@ const PageNumber = ({ page, pageList, setPageList }) => {
       <button onClick={pageDownHandler}>이전</button>
       {page.map((idx, key) => {
         return (
-          <span>
+          <span key={key}>
             <button
               onClick={() => {
                 setPageList(key);
