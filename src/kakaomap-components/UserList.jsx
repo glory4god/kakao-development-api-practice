@@ -4,7 +4,6 @@ import Paper from '@material-ui/core/Paper';
 
 const Root = styled(Paper)`
   font-family: sans-serif;
-  width: 500px;
   height: 60px;
   font-size: 1.1rem;
   display: flex;
