@@ -5,11 +5,9 @@ import styled from 'styled-components';
 import qs from 'querystring';
 import FileUpLoader from './FileUpLoader';
 import FacePreview from './FacePreview';
+import FaceInfo from './FaceInfo';
 
 const Container = styled.div`
-  max-width: 1000px;
-  min-width: 500px;
-
   input {
     margin-right: 0.5rem;
   }
@@ -70,10 +68,10 @@ const FaceIdentification = () => {
 
   return (
     <Container>
+      <h2>카카오 얼굴 식별 API</h2>
       <div className="grid">
         <div>
-          <h2>카카오 얼굴 식별 API</h2>
-          {!loading ? (
+          {!loading && (
             <>
               <h3>이미지 url링크</h3>
               <input
@@ -103,17 +101,18 @@ const FaceIdentification = () => {
                 setLoading={setLoading}
               />
             </>
-          ) : (
-            <FacePreview
-              size={size}
-              imageUrl={imageUrl}
-              setImageUrl={setImageUrl}
-              face={face}
-              setLoading={setLoading}
-              setFace={setFace}
-            />
           )}
         </div>
+        {loading && (
+          <FacePreview
+            size={size}
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+            face={face}
+            setLoading={setLoading}
+            setFace={setFace}
+          />
+        )}
       </div>
     </Container>
   );

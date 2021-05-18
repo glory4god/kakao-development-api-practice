@@ -3,11 +3,8 @@ import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 
 const StyledPaper = styled(Paper)`
-  width: 500px;
   height: 70px;
-  padding: 5px 0;
   margin: 5px 0;
-
   .layout {
     position: relative;
     display: flex;

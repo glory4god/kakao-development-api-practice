@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import FacePreview from './FacePreview';
 
 const Container = styled.section`
-  max-width: 1000px;
-  min-width: 500px;
   .image {
     position: relative;
   }
