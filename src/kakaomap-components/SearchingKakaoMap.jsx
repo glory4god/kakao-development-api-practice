@@ -5,6 +5,11 @@ import UserList from './UserList';
 
 const Root = styled.div`
   display: flex;
+  .grid-box {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 10px;
+  }
 `;
 
 const SearchingKakaoMap = ({
@@ -129,35 +134,37 @@ const SearchingKakaoMap = ({
 
   return (
     <Root>
-      <div>
-        <div style={{ width: '500px', height: '400px' }} id="map" />
-        <input
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
+      <div className="grid-box">
+        <div>
+          <div style={{ height: '400px' }} id="map" />
+          <input
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                setKeyWord(temp);
+                setTemp('');
+              }
+            }}
+            type="text"
+            value={temp}
+            onChange={onChange}
+          />
+          <button
+            onClick={() => {
               setKeyWord(temp);
               setTemp('');
-            }
-          }}
-          type="text"
-          value={temp}
-          onChange={onChange}
-        />
-        <button
-          onClick={() => {
-            setKeyWord(temp);
-            setTemp('');
-          }}>
-          확인
-        </button>
-        {markerList.length !== '' &&
-          markerList.map((idx, key) => <UserList idx={idx} key={key} />)}
-        <button onClick={() => calculateCenter(markerList)}>계산</button>
-        {centerPoint}
-      </div>
-      <div style={{ paddingLeft: '20px' }}>
-        {keyWordList.map((arr) => {
-          return <ListLayout key={arr.id} arr={arr} onClick={onClick} />;
-        })}
+            }}>
+            확인
+          </button>
+          {markerList.length !== '' &&
+            markerList.map((idx, key) => <UserList idx={idx} key={key} />)}
+          <button onClick={() => calculateCenter(markerList)}>계산</button>
+          {centerPoint}
+        </div>
+        <div>
+          {keyWordList.map((arr) => {
+            return <ListLayout key={arr.id} arr={arr} onClick={onClick} />;
+          })}
+        </div>
       </div>
     </Root>
   );
