@@ -1,17 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+import Paper from '@material-ui/core/Paper';
 
-const Root = styled.div`
-  position: absolute;
-  top: 20px;
-  padding-left: 1rem;
+const StyledPaper = styled(Paper)`
+  width: 100%;
+  max-width: 1080px;
+  height: 60px;
+  position: fixed;
+  padding-top: 1rem;
+  margin: 0 auto;
+  z-index: 2;
+  background-color: white;
+
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    padding-left: 1rem;
+  }
 `;
 
 const TopMenubar = () => {
   return (
-    <Root>
-      <div style={{ fontSize: '28px', fontWeight: 'bold' }}>HAYOUNG</div>
-    </Root>
+    <StyledPaper elevation={4}>
+      <div className="title">HAYOUNG</div>
+    </StyledPaper>
   );
 };
 
