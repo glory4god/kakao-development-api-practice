@@ -11,12 +11,13 @@ import GuestBookMain from '../guestbook-components/GuestBookMain';
 import RestApiTest from '../restapi-components/RestApiTest';
 import Main from '../shopping-component/Main';
 import Paper from '@material-ui/core/Paper';
+import Calendar from '../components/Calendar';
 
 const Root = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-column-gap: 20px;
-  padding-top: 5rem;
+  padding-top: 6rem;
   .list {
     padding: 16px 24px;
   }
@@ -75,12 +76,17 @@ const HomePage = () => {
           </div>
           <div className="link-div">
             <Link className="link" to="/shopping">
-              SHOPPING
+              SHOPPING TEST
             </Link>
           </div>
           <div className="link-div">
             <Link className="link" to="/profiles">
               test 공간
+            </Link>
+          </div>
+          <div className="link-div">
+            <Link className="link" to="/datepicker">
+              달력 만들기 TEST
             </Link>
           </div>
         </div>
@@ -95,6 +101,7 @@ const HomePage = () => {
         <Route path="/guestbook" component={GuestBookMain} />
         <Route path="/restapitest" component={RestApiTest} />
         <Route path="/shopping" component={Main} />
+        <Route path="/datepicker" component={Calendar} />
       </Paper>
     </Root>
   );
